@@ -45,9 +45,11 @@ export function CtaContactSection() {
   const [phone, setPhone] = useState("");
   const [projectType, setProjectType] = useState(contactContent.projectTypes[0]);
   const [message, setMessage] = useState("");
-  const [attachedFile, setAttachedFile] = useState<string | null>(null);
+  const [attachedFile, setAttachedFile] = useState<File | null>(null);
   const [privacyAccepted, setPrivacyAccepted] = useState(false);
   const [errors, setErrors] = useState<FormErrors>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const [submitted, setSubmitted] = useState(false);
 
   const handleCopyEmail = async () => {
@@ -72,7 +74,7 @@ export function CtaContactSection() {
       return;
     }
     setErrors((prev) => ({ ...prev, file: undefined }));
-    setAttachedFile(file.name);
+    setAttachedFile(file);
   };
 
   const validate = (): FormErrors => {
@@ -96,13 +98,47 @@ export function CtaContactSection() {
     return nextErrors;
   };
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const validationErrors = validate();
     setErrors(validationErrors);
+    setSubmitError(null);
 
-    if (Object.keys(validationErrors).length === 0) {
+    if (Object.keys(validationErrors).length !== 0) return;
+
+    setIsSubmitting(true);
+    try {
+      const payload = new FormData();
+      payload.append("formType", "Contact Brief");
+      payload.append("firstName", firstName.trim());
+      payload.append("lastName", lastName.trim());
+      payload.append("email", email.trim());
+      if (phone.trim()) payload.append("phone", phone.trim());
+      payload.append("service", projectType);
+      payload.append("message", message.trim());
+      if (attachedFile) payload.append("file", attachedFile);
+
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        body: payload,
+      });
+
+      const data = (await res.json().catch(() => ({}))) as { error?: string };
+      if (!res.ok) {
+        setSubmitError(
+          data.error ||
+            "Could not send your message. Please email hello@dhruboit.tech directly."
+        );
+        return;
+      }
+
       setSubmitted(true);
+    } catch {
+      setSubmitError(
+        "Network error while sending. Please email hello@dhruboit.tech directly."
+      );
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -116,6 +152,7 @@ export function CtaContactSection() {
     setAttachedFile(null);
     setPrivacyAccepted(false);
     setErrors({});
+    setSubmitError(null);
     setSubmitted(false);
   };
 
@@ -538,7 +575,7 @@ export function CtaContactSection() {
                     <Paperclip className="h-4 w-4 shrink-0 text-[#8B5CF6]" />
                     <span className="truncate font-medium text-[#0B0B0F]">
                       {attachedFile
-                        ? attachedFile
+                        ? attachedFile.name
                         : "Attach RFP, spec, or wireframe (PDF, PNG, DOCX up to 10 MB)"}
                     </span>
                   </span>
@@ -604,12 +641,19 @@ export function CtaContactSection() {
 
                 <button
                   type="submit"
-                  className="inline-flex shrink-0 items-center justify-center gap-2 rounded-full bg-[#0B0B0F] px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#1E1E26]"
+                  disabled={isSubmitting}
+                  className="inline-flex shrink-0 items-center justify-center gap-2 rounded-full bg-[#0B0B0F] px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#1E1E26] disabled:opacity-60"
                 >
-                  <span>Send Project Brief</span>
+                  <span>{isSubmitting ? "Sending..." : "Send Project Brief"}</span>
                   <Send className="h-4 w-4" />
                 </button>
               </div>
+
+              {submitError && (
+                <p role="alert" className="rounded-xl border border-[#FECACA] bg-[#FEF2F2] px-4 py-3 text-xs font-medium text-[#B91C1C]">
+                  {submitError}
+                </p>
+              )}
             </form>
           )}
         </motion.div>

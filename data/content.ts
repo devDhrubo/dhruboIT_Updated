@@ -7,9 +7,7 @@ export const siteConfig = {
     "Dhrubo IT engineers high-performance SaaS, AI-native systems, and premium web & mobile products for ambitious founders and enterprises worldwide.",
   url: "https://www.dhruboit.tech",
   email: "hello@dhruboit.tech",
-  phone: "+880 1700-000000",
   operations: "Remote — EU, US, APAC",
-  upworkUrl: "https://www.upwork.com/",
   calUrl: "https://calendly.com/hello-dhruboit/30min",
 };
 
@@ -307,57 +305,6 @@ export const processSteps = [
   },
 ];
 
-export const audienceCards = [
-  {
-    id: "startups",
-    title: "For Startups",
-    description:
-      "Launch investor-ready SaaS MVPs and mobile apps in weekly shipping cycles, architected for multi-tenant scale from day one.",
-    previewType: "chart" as const,
-    metricLabel: "Shipping Cycle",
-    metricValue: "Weekly",
-  },
-  {
-    id: "agencies",
-    title: "For Agencies",
-    description:
-      "Senior white-label Next.js, React 19, and AI engineering that integrates directly with your product and design workflow.",
-    previewType: "popover" as const,
-    metricLabel: "Client Satisfaction",
-    metricValue: "100%",
-  },
-  {
-    id: "enterprises",
-    title: "For Enterprises",
-    description:
-      "Modernize core operational systems with RAG architectures, edge compute, and 99.9% uptime SLA across EU, US, and APAC.",
-    previewType: "tile" as const,
-    metricLabel: "Uptime Guaranteed",
-    metricValue: "99.9%",
-  },
-];
-
-export const bentoStats = [
-  {
-    label: "Projects Deployed",
-    value: 70,
-    suffix: "+",
-    decimals: 0,
-  },
-  {
-    label: "Uptime Guaranteed",
-    value: 99.9,
-    suffix: "%",
-    decimals: 1,
-  },
-  {
-    label: "Countries Served",
-    value: 12,
-    suffix: "",
-    decimals: 0,
-  },
-];
-
 export const techStackItems = [
   {
     id: "frontend",
@@ -422,7 +369,6 @@ export interface Testimonial {
   company: string;
   rating: number;
   quote: string;
-  avatar: string;
   projectTag: string;
 }
 
@@ -435,45 +381,11 @@ export const testimonials: Testimonial[] = [
     rating: 5,
     quote:
       "Dhrubo IT modernized our core operational systems and enterprise software pipeline. Their technical precision, architectural depth, and execution speed are outstanding.",
-    avatar: "/images/avatars/marcus.svg",
     projectTag: "Enterprise Systems",
-  },
-  {
-    id: "t2",
-    name: "Elena Rostova",
-    role: "Head of Digital",
-    company: "Apex Commerce",
-    rating: 5,
-    quote:
-      "Moving from a legacy storefront to Dhrubo IT's headless Next.js 15 edge architecture cut our LCP to 0.38s and lifted mobile conversions by 47% during peak flash sales.",
-    avatar: "/images/avatars/elena.svg",
-    projectTag: "Next.js 15 + Stripe",
-  },
-  {
-    id: "t3",
-    name: "David Chen",
-    role: "VP of Engineering",
-    company: "Synapse AI",
-    rating: 5,
-    quote:
-      "Dhrubo IT shipped our Pinecone vector RAG pipeline with Cloudflare Workers and native Slack RBAC ahead of schedule — saving our ops teams 75% of their daily search time.",
-    avatar: "/images/avatars/david.svg",
-    projectTag: "AI & RAG Agents",
-  },
-  {
-    id: "t4",
-    name: "Sarah Jenkins",
-    role: "Director of Product",
-    company: "Stride Financial",
-    rating: 5,
-    quote:
-      "Their real-time rebalancing engine and WebAuthn biometric client portal allowed our advisors to manage 10x more accounts with 99.99% production uptime.",
-    avatar: "/images/avatars/sarah.svg",
-    projectTag: "FinTech SaaS",
   },
 ];
 
-export const upworkBadges = [
+export const trustBadges = [
   "70+ Projects Deployed",
   "100% Client Satisfaction",
   "99.9% Uptime Guaranteed",
@@ -636,11 +548,5 @@ export const footerContent = {
         { label: "Terms & Conditions", href: "/terms" },
       ],
     },
-  ],
-  socials: [
-    { label: "LinkedIn", href: "https://linkedin.com", icon: "linkedin" as const },
-    { label: "X", href: "https://x.com", icon: "x" as const },
-    { label: "GitHub", href: "https://github.com", icon: "github" as const },
-    { label: "Book Call", href: "https://calendly.com/hello-dhruboit/30min", icon: "upwork" as const },
   ],
 };

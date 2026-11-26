@@ -9,7 +9,7 @@ import {
   useReducedMotion,
 } from "framer-motion";
 import { ChevronLeft, ChevronRight, Star, Award } from "lucide-react";
-import { testimonials, upworkBadges } from "@/data/content";
+import { testimonials, trustBadges } from "@/data/content";
 import { AGENCY_EASE, fadeUpVariants } from "@/lib/motion";
 
 function getInitials(name: string) {
@@ -35,6 +35,7 @@ export function TestimonialsSection() {
   const cardSlideY = useTransform(scrollYProgress, [0.15, 0.85], [88, 0]);
 
   const total = testimonials.length;
+  const hasMultiple = total > 1;
   const prevIndex = (activeIndex - 1 + total) % total;
   const nextIndex = (activeIndex + 1) % total;
 
@@ -75,49 +76,53 @@ export function TestimonialsSection() {
           </p>
         </motion.div>
 
-        {/* Envelope + Peeking Side Cards Stage */}
+        {/* Envelope + Optional Peeking Side Cards Stage */}
         <div className="relative mx-auto mt-16 flex max-w-4xl items-center justify-center">
-          {/* Left Peeking Blurred & Tilted Card */}
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute -left-8 top-12 hidden w-72 -rotate-6 rounded-[24px] border border-[#E5E7EB] bg-white/80 p-6 opacity-65 shadow-lg blur-[2px] lg:block"
-          >
-            <div className="flex items-center gap-3">
-              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#EDE9FE] text-xs font-extrabold text-[#8B5CF6]">
-                {getInitials(prevItem.name)}
-              </span>
-              <div>
-                <p className="text-sm font-bold text-[#0B0B0F]">
-                  {prevItem.name}
+          {hasMultiple && (
+            <>
+              {/* Left Peeking Blurred & Tilted Card */}
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute -left-8 top-12 hidden w-72 -rotate-6 rounded-[24px] border border-[#E5E7EB] bg-white/80 p-6 opacity-65 shadow-lg blur-[2px] lg:block"
+              >
+                <div className="flex items-center gap-3">
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#EDE9FE] text-xs font-extrabold text-[#8B5CF6]">
+                    {getInitials(prevItem.name)}
+                  </span>
+                  <div>
+                    <p className="text-sm font-bold text-[#0B0B0F]">
+                      {prevItem.name}
+                    </p>
+                    <p className="text-xs text-[#6B7280]">{prevItem.company}</p>
+                  </div>
+                </div>
+                <p className="mt-3 line-clamp-3 text-xs text-[#6B7280]">
+                  &ldquo;{prevItem.quote}&rdquo;
                 </p>
-                <p className="text-xs text-[#6B7280]">{prevItem.company}</p>
               </div>
-            </div>
-            <p className="mt-3 line-clamp-3 text-xs text-[#6B7280]">
-              &ldquo;{prevItem.quote}&rdquo;
-            </p>
-          </div>
 
-          {/* Right Peeking Blurred & Tilted Card */}
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute -right-8 top-12 hidden w-72 rotate-6 rounded-[24px] border border-[#E5E7EB] bg-white/80 p-6 opacity-65 shadow-lg blur-[2px] lg:block"
-          >
-            <div className="flex items-center gap-3">
-              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#EDE9FE] text-xs font-extrabold text-[#8B5CF6]">
-                {getInitials(nextItem.name)}
-              </span>
-              <div>
-                <p className="text-sm font-bold text-[#0B0B0F]">
-                  {nextItem.name}
+              {/* Right Peeking Blurred & Tilted Card */}
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute -right-8 top-12 hidden w-72 rotate-6 rounded-[24px] border border-[#E5E7EB] bg-white/80 p-6 opacity-65 shadow-lg blur-[2px] lg:block"
+              >
+                <div className="flex items-center gap-3">
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#EDE9FE] text-xs font-extrabold text-[#8B5CF6]">
+                    {getInitials(nextItem.name)}
+                  </span>
+                  <div>
+                    <p className="text-sm font-bold text-[#0B0B0F]">
+                      {nextItem.name}
+                    </p>
+                    <p className="text-xs text-[#6B7280]">{nextItem.company}</p>
+                  </div>
+                </div>
+                <p className="mt-3 line-clamp-3 text-xs text-[#6B7280]">
+                  &ldquo;{nextItem.quote}&rdquo;
                 </p>
-                <p className="text-xs text-[#6B7280]">{nextItem.company}</p>
               </div>
-            </div>
-            <p className="mt-3 line-clamp-3 text-xs text-[#6B7280]">
-              &ldquo;{nextItem.quote}&rdquo;
-            </p>
-          </div>
+            </>
+          )}
 
           {/* Center Violet Envelope + Sliding White Card */}
           <div className="relative z-10 w-full max-w-xl pt-6">
@@ -198,28 +203,30 @@ export function TestimonialsSection() {
           </div>
         </div>
 
-        {/* Left / Right Circular Arrow Controls */}
-        <div className="mt-8 flex items-center justify-center gap-4">
-          <button
-            type="button"
-            onClick={handlePrev}
-            aria-label="Previous testimonial"
-            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[#E5E7EB] bg-white text-[#0B0B0F] shadow-sm transition-all hover:-translate-x-0.5 hover:border-[#8B5CF6] hover:text-[#8B5CF6]"
-          >
-            <ChevronLeft className="h-5 w-5" />
-          </button>
-          <span className="text-xs font-semibold text-[#6B7280]">
-            {activeIndex + 1} / {total}
-          </span>
-          <button
-            type="button"
-            onClick={handleNext}
-            aria-label="Next testimonial"
-            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[#E5E7EB] bg-white text-[#0B0B0F] shadow-sm transition-all hover:translate-x-0.5 hover:border-[#8B5CF6] hover:text-[#8B5CF6]"
-          >
-            <ChevronRight className="h-5 w-5" />
-          </button>
-        </div>
+        {/* Left / Right Circular Arrow Controls (shown when 2+ testimonials exist) */}
+        {hasMultiple && (
+          <div className="mt-8 flex items-center justify-center gap-4">
+            <button
+              type="button"
+              onClick={handlePrev}
+              aria-label="Previous testimonial"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[#E5E7EB] bg-white text-[#0B0B0F] shadow-sm transition-all hover:-translate-x-0.5 hover:border-[#8B5CF6] hover:text-[#8B5CF6]"
+            >
+              <ChevronLeft className="h-5 w-5" />
+            </button>
+            <span className="text-xs font-semibold text-[#6B7280]">
+              {activeIndex + 1} / {total}
+            </span>
+            <button
+              type="button"
+              onClick={handleNext}
+              aria-label="Next testimonial"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[#E5E7EB] bg-white text-[#0B0B0F] shadow-sm transition-all hover:translate-x-0.5 hover:border-[#8B5CF6] hover:text-[#8B5CF6]"
+            >
+              <ChevronRight className="h-5 w-5" />
+            </button>
+          </div>
+        )}
 
         {/* Credibility Badge Row */}
         <motion.div
@@ -229,7 +236,7 @@ export function TestimonialsSection() {
           variants={fadeUpVariants}
           className="mt-12 flex flex-wrap items-center justify-center gap-3"
         >
-          {upworkBadges.map((badge) => (
+          {trustBadges.map((badge) => (
             <span
               key={badge}
               className="inline-flex items-center gap-2 rounded-full border border-[#E5E7EB] bg-white px-4 py-2 text-xs font-semibold text-[#0B0B0F] shadow-sm"

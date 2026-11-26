@@ -61,9 +61,11 @@ export function ProjectEstimatorSection() {
   const [email, setEmail] = useState("");
   const [company, setCompany] = useState("");
   const [message, setMessage] = useState("");
-  const [attachedFile, setAttachedFile] = useState<string | null>(null);
+  const [attachedFile, setAttachedFile] = useState<File | null>(null);
   const [privacyAccepted, setPrivacyAccepted] = useState(false);
   const [errors, setErrors] = useState<FormErrors>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const [submitted, setSubmitted] = useState(false);
 
   const handleCopyEmail = async () => {
@@ -84,7 +86,7 @@ export function ProjectEstimatorSection() {
       return;
     }
     setErrors((prev) => ({ ...prev, file: undefined }));
-    setAttachedFile(file.name);
+    setAttachedFile(file);
   };
 
   const validate = (): FormErrors => {
@@ -108,12 +110,48 @@ export function ProjectEstimatorSection() {
     return nextErrors;
   };
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const validationErrors = validate();
     setErrors(validationErrors);
-    if (Object.keys(validationErrors).length === 0) {
+    setSubmitError(null);
+    if (Object.keys(validationErrors).length !== 0) return;
+
+    setIsSubmitting(true);
+    try {
+      const payload = new FormData();
+      payload.append("formType", "Project Estimation");
+      payload.append("firstName", firstName.trim());
+      payload.append("lastName", lastName.trim());
+      payload.append("email", email.trim());
+      if (company.trim()) payload.append("company", company.trim());
+      payload.append("service", selectedService);
+      payload.append("budget", selectedBudget);
+      payload.append("timeline", selectedTimeline);
+      payload.append("message", message.trim());
+      if (attachedFile) payload.append("file", attachedFile);
+
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        body: payload,
+      });
+
+      const data = (await res.json().catch(() => ({}))) as { error?: string };
+      if (!res.ok) {
+        setSubmitError(
+          data.error ||
+            "Could not send your estimation request. Please email hello@dhruboit.tech directly."
+        );
+        return;
+      }
+
       setSubmitted(true);
+    } catch {
+      setSubmitError(
+        "Network error while sending. Please email hello@dhruboit.tech directly."
+      );
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -126,6 +164,7 @@ export function ProjectEstimatorSection() {
     setAttachedFile(null);
     setPrivacyAccepted(false);
     setErrors({});
+    setSubmitError(null);
     setSubmitted(false);
   };
 
@@ -440,7 +479,7 @@ export function ProjectEstimatorSection() {
                       <Paperclip className="h-4 w-4 shrink-0 text-[#8B5CF6]" />
                       <span className="truncate font-medium text-[#0B0B0F]">
                         {attachedFile
-                          ? attachedFile
+                          ? attachedFile.name
                           : "Attach RFP, spec, or wireframe (PDF, PNG, DOCX up to 10 MB)"}
                       </span>
                     </span>
@@ -503,11 +542,18 @@ export function ProjectEstimatorSection() {
                   )}
                 </div>
 
+                {submitError && (
+                  <p role="alert" className="rounded-xl border border-[#FECACA] bg-[#FEF2F2] px-4 py-3 text-xs font-medium text-[#B91C1C]">
+                    {submitError}
+                  </p>
+                )}
+
                 <button
                   type="submit"
-                  className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#F0523D] px-7 py-3.5 text-sm font-semibold text-white shadow-[0_14px_30px_-10px_rgba(240,82,61,0.5)] transition-transform duration-200 hover:-translate-y-0.5 hover:bg-[#E0432F]"
+                  disabled={isSubmitting}
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#F0523D] px-7 py-3.5 text-sm font-semibold text-white shadow-[0_14px_30px_-10px_rgba(240,82,61,0.5)] transition-transform duration-200 hover:-translate-y-0.5 hover:bg-[#E0432F] disabled:opacity-60"
                 >
-                  <span>Get Written Estimate</span>
+                  <span>{isSubmitting ? "Sending Estimate Request..." : "Get Written Estimate"}</span>
                   <Send className="h-4 w-4" />
                 </button>
               </form>
