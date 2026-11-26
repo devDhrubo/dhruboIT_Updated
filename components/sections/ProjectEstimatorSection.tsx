@@ -140,7 +140,7 @@ export function ProjectEstimatorSection() {
       if (!res.ok) {
         setSubmitError(
           data.error ||
-            "Could not send your estimation request. Please email hello@dhruboit.tech directly."
+            "Could not send your estimation request. Please email hello.dhruboit@gmail.com directly."
         );
         return;
       }
@@ -148,7 +148,7 @@ export function ProjectEstimatorSection() {
       setSubmitted(true);
     } catch {
       setSubmitError(
-        "Network error while sending. Please email hello@dhruboit.tech directly."
+        "Network error while sending. Please email hello.dhruboit@gmail.com directly."
       );
     } finally {
       setIsSubmitting(false);

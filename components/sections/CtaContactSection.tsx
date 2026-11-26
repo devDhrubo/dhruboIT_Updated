@@ -127,7 +127,7 @@ export function CtaContactSection() {
       if (!res.ok) {
         setSubmitError(
           data.error ||
-            "Could not send your message. Please email hello@dhruboit.tech directly."
+            "Could not send your message. Please email hello.dhruboit@gmail.com directly."
         );
         return;
       }
@@ -135,7 +135,7 @@ export function CtaContactSection() {
       setSubmitted(true);
     } catch {
       setSubmitError(
-        "Network error while sending. Please email hello@dhruboit.tech directly."
+        "Network error while sending. Please email hello.dhruboit@gmail.com directly."
       );
     } finally {
       setIsSubmitting(false);

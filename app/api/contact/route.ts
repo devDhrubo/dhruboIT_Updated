@@ -19,7 +19,7 @@ export async function POST(request: Request) {
       return NextResponse.json(
         {
           error:
-            "Email service is not configured yet. Please email hello@dhruboit.tech directly or book on Calendly.",
+            "Email service is not configured yet. Please email hello.dhruboit@gmail.com directly or book on Calendly.",
         },
         { status: 503 }
       );
@@ -75,9 +75,9 @@ export async function POST(request: Request) {
     }
 
     const resend = new Resend(apiKey);
-    const toEmail = process.env.CONTACT_TO_EMAIL || "hello@dhruboit.tech";
+    const toEmail = process.env.CONTACT_TO_EMAIL || "hello.dhruboit@gmail.com";
     const fromEmail =
-      process.env.RESEND_FROM_EMAIL || "Dhrubo IT Website <onboarding@resend.dev>";
+      process.env.RESEND_FROM_EMAIL || "onboarding@resend.dev";
 
     const fullName = `${firstName} ${lastName}`;
     const subject = `[Dhrubo IT — ${formType}] ${fullName}${service ? ` (${service.split("(")[0].trim()})` : ""}`;
@@ -124,7 +124,7 @@ export async function POST(request: Request) {
 
     if (error) {
       return NextResponse.json(
-        { error: "Could not deliver your message right now. Please email hello@dhruboit.tech directly." },
+        { error: "Could not deliver your message right now. Please email hello.dhruboit@gmail.com directly." },
         { status: 502 }
       );
     }
@@ -132,7 +132,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: true });
   } catch {
     return NextResponse.json(
-      { error: "Unexpected error while sending your inquiry. Please email hello@dhruboit.tech directly." },
+      { error: "Unexpected error while sending your inquiry. Please email hello.dhruboit@gmail.com directly." },
       { status: 500 }
     );
   }

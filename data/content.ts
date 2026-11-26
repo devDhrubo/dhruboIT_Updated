@@ -6,7 +6,7 @@ export const siteConfig = {
   description:
     "Dhrubo IT engineers high-performance SaaS, AI-native systems, and premium web & mobile products for ambitious founders and enterprises worldwide.",
   url: "https://www.dhruboit.tech",
-  email: "hello@dhruboit.tech",
+  email: "hello.dhruboit@gmail.com",
   operations: "Remote — EU, US, APAC",
   calUrl: "https://calendly.com/hello-dhruboit/30min",
 };
@@ -427,7 +427,7 @@ export const consultationSteps = [
 export const directContactPerson = {
   name: "Enterprise Solutions Desk",
   role: "Business Development & Technical Advisory",
-  email: "hello@dhruboit.tech",
+  email: "hello.dhruboit@gmail.com",
   responseTime: "Response within 24 hours (EU, US, APAC)",
 };
 
@@ -543,7 +543,7 @@ export const footerContent = {
       title: "Connect",
       links: [
         { label: "Book 30-Min Call", href: "https://calendly.com/hello-dhruboit/30min" },
-        { label: "hello@dhruboit.tech", href: "mailto:hello@dhruboit.tech" },
+        { label: "hello.dhruboit@gmail.com", href: "mailto:hello.dhruboit@gmail.com" },
         { label: "Privacy Policy", href: "/privacy" },
         { label: "Terms & Conditions", href: "/terms" },
       ],
