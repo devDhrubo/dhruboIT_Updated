@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Navbar } from "@/components/sections/Navbar";
@@ -30,6 +31,30 @@ export default function AboutPage() {
             <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-[#6B7280] sm:text-lg">
               {agencyOverview.description}
             </p>
+
+            {/* Editorial Studio Photography Banner */}
+            <div className="mt-10 grid gap-4 sm:grid-cols-12">
+              <div className="overflow-hidden rounded-[24px] border border-[#E5E7EB] sm:col-span-7">
+                <Image
+                  src="/images/studio/team-collab.jpg"
+                  alt="Dhrubo IT engineering and design collaboration"
+                  width={1000}
+                  height={650}
+                  className="h-60 w-full object-cover sm:h-72"
+                  priority
+                />
+              </div>
+              <div className="overflow-hidden rounded-[24px] border border-[#E5E7EB] sm:col-span-5">
+                <Image
+                  src="/images/studio/engineering-desk.jpg"
+                  alt="Modern engineering workspace at Dhrubo IT"
+                  width={800}
+                  height={650}
+                  className="h-60 w-full object-cover sm:h-72"
+                  priority
+                />
+              </div>
+            </div>
 
             <div className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
               {agencyOverview.stats.map((stat) => (

@@ -72,6 +72,8 @@ export interface ServiceItem {
   tagline: string;
   description: string;
   timeline: string;
+  image: string;
+  imageAlt: string;
   deliverables: string[];
   stack: string[];
   outcomes: string[];
@@ -86,6 +88,8 @@ export const servicesList: ServiceItem[] = [
     description:
       "We engineer edge-rendered marketing sites, custom enterprise portals, and complex SPAs using Next.js 15, React 19, and TypeScript — achieving 95+ Core Web Vitals and rock-solid SEO.",
     timeline: "3–8 weeks",
+    image: "/images/services/web-dev.jpg",
+    imageAlt: "Modern full-stack web engineering workspace",
     deliverables: [
       "Technical architecture & SEO blueprint",
       "Responsive design system in Figma & Tailwind",
@@ -108,6 +112,8 @@ export const servicesList: ServiceItem[] = [
     description:
       "From seed-stage MVPs to multi-tenant B2B platforms, we build complete SaaS products with role-based access control, Stripe billing, real-time analytics, and audit-ready security.",
     timeline: "6–12 weeks",
+    image: "/images/services/saas.jpg",
+    imageAlt: "Multi-tenant SaaS analytics dashboard on modern screen",
     deliverables: [
       "Multi-tenant database schema & RBAC authentication",
       "Stripe subscriptions, usage metering, and invoicing",
@@ -130,6 +136,8 @@ export const servicesList: ServiceItem[] = [
     description:
       "We embed practical AI directly into your operations — custom vector-search RAG assistants, document extraction pipelines, and automated n8n / agentic workflows that save teams dozens of hours weekly.",
     timeline: "3–6 weeks",
+    image: "/images/services/ai.jpg",
+    imageAlt: "Enterprise AI and neural RAG architecture visualization",
     deliverables: [
       "AI feasibility & data privacy architecture",
       "Pinecone / pgvector RAG ingestion & retrieval pipeline",
@@ -152,6 +160,8 @@ export const servicesList: ServiceItem[] = [
     description:
       "We craft consumer and enterprise mobile experiences with React Native and Expo — complete with biometric WebAuthn security, offline sync, push notifications, and App Store / Play Store launch support.",
     timeline: "6–10 weeks",
+    image: "/images/services/mobile.jpg",
+    imageAlt: "Cross-platform mobile application interface design",
     deliverables: [
       "iOS & Android interactive prototypes",
       "React Native + Expo unified mobile app",
@@ -174,6 +184,8 @@ export const servicesList: ServiceItem[] = [
     description:
       "We modernize legacy infrastructure onto AWS, Vercel, and Cloudflare with Terraform IaC, automated CI/CD, and sub-second headless storefronts engineered for peak traffic.",
     timeline: "2–6 weeks",
+    image: "/images/services/cloud.jpg",
+    imageAlt: "Global cloud infrastructure and edge network visualization",
     deliverables: [
       "Cloud architecture audit & cost optimization",
       "Terraform Infrastructure-as-Code & Docker pipelines",
@@ -195,6 +207,8 @@ export interface IndustryItem {
   name: string;
   headline: string;
   description: string;
+  image: string;
+  imageAlt: string;
   kpis: { label: string; value: string }[];
 }
 
@@ -205,6 +219,8 @@ export const industries: IndustryItem[] = [
     headline: "Real-time financial platforms built for trust and compliance",
     description:
       "We engineer wealth management portals, biometric mobile banking apps, and automated treasury dashboards that handle high-value transactions with zero latency and full audit trails.",
+    image: "/images/industries/fintech.jpg",
+    imageAlt: "Real-time financial trading and banking analytics",
     kpis: [
       { label: "Assets Managed", value: "$65M+ AUM" },
       { label: "Security Standard", value: "WebAuthn & RBAC" },
@@ -218,6 +234,8 @@ export const industries: IndustryItem[] = [
     headline: "Headless storefronts engineered for peak flash-sale conversion",
     description:
       "We replace sluggish legacy themes with edge-rendered Next.js 15 and Shopify Plus storefronts featuring instant cart state, diagnostic quizzes, and frictionless mobile checkout.",
+    image: "/images/industries/ecommerce.jpg",
+    imageAlt: "Modern retail and headless e-commerce checkout experience",
     kpis: [
       { label: "Conversion Lift", value: "+47% Mobile" },
       { label: "Page Speed", value: "0.38s LCP" },
@@ -231,6 +249,8 @@ export const industries: IndustryItem[] = [
     headline: "Modernizing mission-critical ERP and operational pipelines",
     description:
       "We help established enterprises replace brittle legacy tools and spreadsheets with unified, multi-region cloud platforms, real-time executive telemetry, and automated reporting.",
+    image: "/images/industries/enterprise.jpg",
+    imageAlt: "Global enterprise corporate architecture and operations",
     kpis: [
       { label: "Enterprise Clients", value: "Taj Intl, Unique Telecom" },
       { label: "Deployment Style", value: "Zero-Downtime Migration" },
@@ -244,6 +264,8 @@ export const industries: IndustryItem[] = [
     headline: "Cognitive workflows and RAG copilots that ship to production",
     description:
       "We move beyond AI demos to build secure vector-search knowledge agents, Slack copilots, and automated document pipelines grounded in your proprietary enterprise data.",
+    image: "/images/industries/ai-industry.jpg",
+    imageAlt: "Artificial intelligence and cognitive automation systems",
     kpis: [
       { label: "Ops Time Saved", value: "75% Faster Q&A" },
       { label: "Connected Sources", value: "14+ SaaS Integrations" },
@@ -257,6 +279,8 @@ export const industries: IndustryItem[] = [
     headline: "End-to-end product engineering for ambitious founders",
     description:
       "From interactive Figma prototypes to multi-tenant web SaaS and React Native mobile apps, we partner with founders to ship investor-ready products in weekly sprints.",
+    image: "/images/industries/saas-mobile.jpg",
+    imageAlt: "SaaS and mobile digital product engineering",
     kpis: [
       { label: "Store Rating", value: "4.9★ iOS & Android" },
       { label: "Release Cadence", value: "Weekly Sprints" },

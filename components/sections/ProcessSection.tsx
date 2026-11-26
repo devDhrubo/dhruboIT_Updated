@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { processSteps } from "@/data/content";
 import { fadeUpVariants, staggerContainer } from "@/lib/motion";
@@ -34,12 +35,52 @@ export function ProcessSection() {
           </p>
         </motion.div>
 
+        {/* Cinematic Engineering Workflow Visual Banner */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={fadeUpVariants}
+          className="relative mt-12 overflow-hidden rounded-[28px] border border-[#E5E7EB]/90 bg-[#0B0B0F] shadow-[0_24px_60px_-15px_rgba(11,11,15,0.12)]"
+        >
+          <div className="relative h-56 w-full sm:h-72">
+            <Image
+              src="/images/studio/workflow-banner.jpg"
+              alt="Dhrubo IT agile product design and sprint planning workflow"
+              fill
+              sizes="(max-width: 1200px) 100vw, 1152px"
+              className="object-cover"
+            />
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#0B0B0F]/85 via-[#0B0B0F]/55 to-[#0B0B0F]/25"
+            />
+            <div className="relative z-10 flex h-full flex-col justify-end p-6 sm:p-10">
+              <div className="flex flex-wrap gap-2">
+                <span className="rounded-full border border-white/20 bg-white/15 px-3 py-1 text-[11px] font-semibold text-white backdrop-blur-md">
+                  Weekly Playable Demos
+                </span>
+                <span className="rounded-full border border-white/20 bg-white/15 px-3 py-1 text-[11px] font-semibold text-white backdrop-blur-md">
+                  Direct Slack With Engineers
+                </span>
+                <span className="rounded-full border border-white/20 bg-white/15 px-3 py-1 text-[11px] font-semibold text-white backdrop-blur-md">
+                  Zero Vendor Hand-Offs
+                </span>
+              </div>
+              <p className="mt-3 max-w-xl text-lg font-bold tracking-tight text-white sm:text-2xl">
+                Strategy, design, engineering, QA, and cloud operations working
+                as one integrated pod.
+              </p>
+            </div>
+          </div>
+        </motion.div>
+
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.15 }}
           variants={staggerContainer}
-          className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
+          className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
         >
           {processSteps.map((item) => (
             <motion.article
