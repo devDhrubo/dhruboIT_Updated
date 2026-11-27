@@ -60,17 +60,17 @@ export function AboutOverviewSection() {
             variants={fadeUpVariants}
             className="relative lg:col-span-6"
           >
-            <div className="grid grid-cols-12 gap-4">
-              <div className="col-span-7 overflow-hidden rounded-[24px] border border-[#E5E7EB]/90 bg-[#F4F5F7] shadow-[0_24px_60px_-15px_rgba(11,11,15,0.12)]">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-12">
+              <div className="overflow-hidden rounded-[24px] border border-[#E5E7EB]/90 bg-[#F4F5F7] shadow-[0_24px_60px_-15px_rgba(11,11,15,0.12)] sm:col-span-7">
                 <Image
                   src="/images/studio/team-collab.jpg"
                   alt="Dhrubo IT senior engineering team collaborating on architecture"
                   width={900}
                   height={720}
-                  className="h-64 w-full object-cover transition-transform duration-700 hover:scale-105 sm:h-80"
+                  className="h-60 w-full object-cover transition-transform duration-700 hover:scale-105 sm:h-80"
                 />
               </div>
-              <div className="col-span-5 flex flex-col justify-end gap-4">
+              <div className="flex flex-col justify-end gap-4 sm:col-span-5">
                 <div className="overflow-hidden rounded-[24px] border border-[#E5E7EB]/90 bg-[#F4F5F7] shadow-[0_24px_60px_-15px_rgba(11,11,15,0.12)]">
                   <Image
                     src="/images/studio/engineering-desk.jpg"

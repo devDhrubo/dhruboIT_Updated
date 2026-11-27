@@ -185,7 +185,7 @@ export function TechStackSection() {
       className="bg-[#F4F5F7] py-16 md:min-h-[160vh] md:py-24"
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6 md:sticky md:top-24">
-        <div className="rounded-[28px] border border-[#E5E7EB]/80 bg-white px-6 py-14 shadow-[0_20px_60px_-15px_rgba(11,11,15,0.06)] sm:px-12 sm:py-20">
+        <div className="overflow-hidden rounded-[28px] border border-[#E5E7EB]/80 bg-white px-4 py-12 shadow-[0_20px_60px_-15px_rgba(11,11,15,0.06)] sm:px-12 sm:py-20">
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -205,7 +205,7 @@ export function TechStackSection() {
           </motion.div>
 
           {/* 5-Tile Rotating Fan with Real Tech Logos */}
-          <div className="relative mt-14 flex h-44 items-center justify-center sm:h-52">
+          <div className="relative mt-10 flex h-40 scale-[0.76] items-center justify-center sm:mt-14 sm:h-52 sm:scale-100">
             {fanOffsets.map((offset) => {
               const total = techStackItems.length;
               const itemIndex = (activeIndex + offset + total) % total;

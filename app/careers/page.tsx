@@ -52,7 +52,7 @@ export default function CareersPage() {
         }}
       />
       <Navbar />
-      <main className="bg-[#F4F5F7] pt-30 pb-24 sm:pt-34">
+      <main className="overflow-x-clip bg-[#F4F5F7] pt-28 pb-20 sm:pt-32 sm:pb-24">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           {/* Page Header */}
           <div className="mx-auto max-w-3xl text-center">
@@ -63,16 +63,24 @@ export default function CareersPage() {
             <h1 className="mt-4 text-3xl font-extrabold tracking-[-0.035em] text-[#0B0B0F] sm:text-5xl">
               Grow together with {siteConfig.agencyName}
             </h1>
-            <p className="mx-auto mt-4 max-w-2xl text-base text-[#6B7280] sm:text-lg">
+            <p className="mx-auto mt-4 max-w-2xl text-sm text-[#6B7280] sm:text-lg">
               Partner with a senior global software &amp; AI engineering agency
               delivering high-impact digital products to international clients.
             </p>
+            <div className="mt-6 lg:hidden">
+              <a
+                href="#apply-now"
+                className="inline-flex items-center justify-center rounded-full bg-[#F0523D] px-6 py-3 text-sm font-bold text-white shadow-[0_14px_30px_-10px_rgba(240,82,61,0.5)]"
+              >
+                Jump to Application Form ↓
+              </a>
+            </div>
           </div>
 
           {/* 2-Column Job Detail + Sticky Application Form */}
-          <div className="mt-12 grid items-start gap-8 lg:grid-cols-12">
+          <div className="mt-10 grid grid-cols-1 items-start gap-6 sm:mt-12 sm:gap-8 lg:grid-cols-12">
             {/* Left: Structured Job Listing */}
-            <article className="space-y-8 rounded-[28px] border border-[#E5E7EB]/90 bg-white p-7 shadow-[0_20px_60px_-15px_rgba(11,11,15,0.06)] sm:p-10 lg:col-span-7">
+            <article className="min-w-0 space-y-7 rounded-[24px] border border-[#E5E7EB]/90 bg-white p-5 shadow-[0_20px_60px_-15px_rgba(11,11,15,0.06)] sm:space-y-8 sm:rounded-[28px] sm:p-10 lg:col-span-7">
               <div>
                 <div className="flex flex-wrap items-center gap-2">
                   <span className="inline-flex items-center gap-1.5 rounded-full bg-[#ECFDF5] px-3 py-1 text-xs font-bold text-[#10B981]">
@@ -199,7 +207,7 @@ export default function CareersPage() {
             </article>
 
             {/* Right: Sticky Resend Application Form */}
-            <div className="lg:sticky lg:top-24 lg:col-span-5">
+            <div className="min-w-0 lg:sticky lg:top-24 lg:col-span-5">
               <CareerApplicationForm roleTitle={featuredJob.title} />
             </div>
           </div>

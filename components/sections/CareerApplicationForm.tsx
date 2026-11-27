@@ -133,7 +133,7 @@ export function CareerApplicationForm({ roleTitle }: { roleTitle: string }) {
   return (
     <div
       id="apply-now"
-      className="rounded-[28px] border border-[#E5E7EB]/90 bg-white p-6 shadow-[0_24px_65px_-15px_rgba(11,11,15,0.08)] sm:p-8"
+      className="min-w-0 rounded-[24px] border border-[#E5E7EB]/90 bg-white p-5 shadow-[0_24px_65px_-15px_rgba(11,11,15,0.08)] sm:rounded-[28px] sm:p-8"
     >
       {submitted ? (
         <motion.div
@@ -296,14 +296,14 @@ export function CareerApplicationForm({ roleTitle }: { roleTitle: string }) {
           <div>
             <label
               htmlFor="career-resume"
-              className="flex cursor-pointer items-center justify-between gap-2 rounded-xl border border-dashed border-[#D1D5DB] bg-[#FAFAFC] px-3.5 py-2.5 text-xs text-[#6B7280] transition-colors hover:border-[#8B5CF6] hover:bg-white"
+              className="flex min-w-0 cursor-pointer items-center justify-between gap-2 rounded-xl border border-dashed border-[#D1D5DB] bg-[#FAFAFC] px-3.5 py-2.5 text-xs text-[#6B7280] transition-colors hover:border-[#8B5CF6] hover:bg-white"
             >
-              <span className="flex items-center gap-2 truncate">
+              <span className="flex min-w-0 items-center gap-2">
                 <Paperclip className="h-4 w-4 shrink-0 text-[#8B5CF6]" />
                 <span className="truncate font-medium text-[#0B0B0F]">
                   {resumeFile
                     ? resumeFile.name
-                    : "Attach CV / Resume (Optional, PDF/DOCX up to 10 MB)"}
+                    : "Attach CV / Resume (Optional, PDF/DOCX)"}
                 </span>
               </span>
               {resumeFile && (
@@ -365,10 +365,10 @@ export function CareerApplicationForm({ roleTitle }: { roleTitle: string }) {
             <p className="text-center text-[11px] font-semibold uppercase tracking-wider text-[#6B7280]">
               Or email your introduction directly
             </p>
-            <div className="mt-2.5 flex items-center justify-center gap-2">
+            <div className="mt-2.5 flex flex-wrap items-center justify-center gap-2">
               <a
                 href={`mailto:${siteConfig.email}?subject=Application%3A%20${encodeURIComponent(roleTitle)}`}
-                className="inline-flex items-center gap-1.5 rounded-full bg-[#F4F5F7] px-3.5 py-2 text-xs font-semibold text-[#0B0B0F] hover:bg-[#EDE9FE] hover:text-[#8B5CF6]"
+                className="inline-flex max-w-full items-center gap-1.5 rounded-full bg-[#F4F5F7] px-3.5 py-2 text-xs font-semibold text-[#0B0B0F] hover:bg-[#EDE9FE] hover:text-[#8B5CF6] break-all"
               >
                 <Mail className="h-3.5 w-3.5" />
                 <span>{siteConfig.email}</span>

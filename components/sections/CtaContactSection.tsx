@@ -196,7 +196,7 @@ export function CtaContactSection() {
           className="mt-12 grid gap-6 lg:grid-cols-12"
         >
           {/* Card 1: Featured Calendly Booking Card */}
-          <div className="relative overflow-hidden rounded-[28px] bg-gradient-to-br from-[#0B0B0F] via-[#14141F] to-[#1F1738] p-8 text-white shadow-[0_28px_70px_-15px_rgba(11,11,15,0.35)] sm:p-10 lg:col-span-7 flex flex-col justify-between">
+          <div className="relative min-w-0 overflow-hidden rounded-[24px] bg-gradient-to-br from-[#0B0B0F] via-[#14141F] to-[#1F1738] p-6 text-white shadow-[0_28px_70px_-15px_rgba(11,11,15,0.35)] sm:rounded-[28px] sm:p-10 lg:col-span-7 flex flex-col justify-between">
             {/* Ambient Violet & Coral Glow */}
             <div
               aria-hidden="true"
@@ -256,7 +256,7 @@ export function CtaContactSection() {
           </div>
 
           {/* Card 2: Direct Email Spotlight Card */}
-          <div className="flex flex-col justify-between rounded-[28px] border-2 border-[#8B5CF6]/25 bg-gradient-to-b from-[#FAFAFC] to-white p-8 shadow-[0_24px_60px_-15px_rgba(139,92,246,0.12)] sm:p-10 lg:col-span-5">
+          <div className="min-w-0 flex flex-col justify-between rounded-[24px] border-2 border-[#8B5CF6]/25 bg-gradient-to-b from-[#FAFAFC] to-white p-6 shadow-[0_24px_60px_-15px_rgba(139,92,246,0.12)] sm:rounded-[28px] sm:p-10 lg:col-span-5">
             <div>
               <span className="inline-flex items-center gap-1.5 rounded-full bg-[#EDE9FE] px-3.5 py-1 text-xs font-semibold text-[#8B5CF6]">
                 <Mail className="h-3.5 w-3.5" />

@@ -509,7 +509,7 @@ export function InteractiveGlobe() {
   }, []);
 
   return (
-    <div className="relative flex h-[380px] w-full max-w-[520px] items-center justify-center sm:h-[480px] lg:h-[520px]">
+    <div className="relative flex h-[340px] w-full max-w-[520px] items-center justify-center overflow-hidden sm:h-[480px] lg:h-[520px]">
       {/* Soft cyan/violet studio halo behind the full globe */}
       <div
         aria-hidden="true"
@@ -521,7 +521,7 @@ export function InteractiveGlobe() {
         aria-hidden="true"
         animate={prefersReducedMotion ? undefined : { rotate: 360 }}
         transition={{ duration: 34, repeat: Infinity, ease: "linear" }}
-        className="pointer-events-none absolute z-20 h-[330px] w-[330px] rounded-full border border-dashed border-[#8B5CF6]/20 sm:h-[430px] sm:w-[430px] lg:h-[465px] lg:w-[465px]"
+        className="pointer-events-none absolute z-20 h-[270px] w-[270px] rounded-full border border-dashed border-[#8B5CF6]/20 sm:h-[420px] sm:w-[420px] lg:h-[465px] lg:w-[465px]"
       >
         {orbitingTechBadges.map((badge) => {
           const rad = (badge.angle * Math.PI) / 180;

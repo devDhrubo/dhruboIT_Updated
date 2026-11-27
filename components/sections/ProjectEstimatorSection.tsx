@@ -224,9 +224,9 @@ export function ProjectEstimatorSection() {
         </div>
 
         {/* Two-Column Estimator Layout (Immediately Visible) */}
-        <div className="mt-10 grid items-start gap-8 lg:grid-cols-12">
+        <div className="mt-10 grid grid-cols-1 items-start gap-6 sm:gap-8 lg:grid-cols-12">
           {/* Left: Interactive Estimator Form */}
-          <div className="lg:col-span-7 rounded-[28px] border border-[#E5E7EB]/85 bg-white p-6 shadow-[0_24px_65px_-15px_rgba(11,11,15,0.08)] sm:p-9">
+          <div className="min-w-0 lg:col-span-7 rounded-[24px] border border-[#E5E7EB]/85 bg-white p-5 shadow-[0_24px_65px_-15px_rgba(11,11,15,0.08)] sm:rounded-[28px] sm:p-9">
             {submitted ? (
               <motion.div
                 initial={{ opacity: 0, scale: 0.96 }}
@@ -561,7 +561,7 @@ export function ProjectEstimatorSection() {
           </div>
 
           {/* Right: Live Scope Summary + What Happens Next + Enterprise Desk */}
-          <div className="lg:col-span-5 flex flex-col gap-6">
+          <div className="min-w-0 lg:col-span-5 flex flex-col gap-6">
             {/* Live Selected Scope Summary */}
             <div className="rounded-[26px] border border-[#8B5CF6]/25 bg-white p-6 shadow-sm">
               <p className="text-xs font-bold uppercase tracking-wider text-[#8B5CF6]">
