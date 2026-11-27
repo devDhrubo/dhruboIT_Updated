@@ -23,8 +23,34 @@ export const metadata: Metadata = {
 export default function CareersPage() {
   const featuredJob = jobOpenings[0];
 
+  const jobPostingJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "JobPosting",
+    title: featuredJob.title,
+    description: `${featuredJob.about} Compensation: ${featuredJob.compensation}`,
+    datePosted: "2026-11-27",
+    employmentType: "CONTRACTOR",
+    jobLocationType: "TELECOMMUTE",
+    hiringOrganization: {
+      "@type": "Organization",
+      name: siteConfig.agencyName,
+      sameAs: siteConfig.url,
+      logo: `${siteConfig.url}/images/logo.png`,
+    },
+    applicantLocationRequirements: {
+      "@type": "Country",
+      name: "Worldwide",
+    },
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(jobPostingJsonLd),
+        }}
+      />
       <Navbar />
       <main className="bg-[#F4F5F7] pt-30 pb-24 sm:pt-34">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">

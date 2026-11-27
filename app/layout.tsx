@@ -14,18 +14,26 @@ const jakarta = Plus_Jakarta_Sans({
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
-  title: `${siteConfig.agencyName} — ${siteConfig.tagline}`,
+  title: {
+    default: `${siteConfig.agencyName} — ${siteConfig.tagline}`,
+    template: `%s | ${siteConfig.agencyName}`,
+  },
   description: siteConfig.description,
   keywords: [
+    "Dhrubo IT",
+    "DhruboIT",
+    "dhruboit.tech",
+    "Software Development Agency",
     "Web Development Agency",
-    "Upwork Top Rated Agency",
     "Next.js Development",
-    "MERN Stack",
-    "MEAN Stack",
-    "Shopify Plus",
-    "WordPress Development",
-    "AI Integrations",
+    "SaaS Engineering",
+    "AI Solutions & RAG",
+    "Mobile App Development",
+    "Cloud & DevOps",
   ],
+  alternates: {
+    canonical: siteConfig.url,
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -42,12 +50,54 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
+  verification: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
+    ? { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION }
+    : undefined,
   icons: {
     icon: [{ url: "/images/logo.png", type: "image/png" }],
     shortcut: ["/images/logo.png"],
     apple: [{ url: "/images/logo.png", type: "image/png" }],
   },
+};
+
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": `${siteConfig.url}/#organization`,
+      name: siteConfig.agencyName,
+      alternateName: ["DhruboIT", "Dhrubo IT Agency", "Dhrubo IT Studio"],
+      url: siteConfig.url,
+      logo: `${siteConfig.url}/images/logo.png`,
+      email: siteConfig.email,
+      description: siteConfig.description,
+      areaServed: ["EU", "US", "APAC", "Worldwide"],
+      contactPoint: {
+        "@type": "ContactPoint",
+        contactType: "sales",
+        email: siteConfig.email,
+        availableLanguage: ["English"],
+      },
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${siteConfig.url}/#website`,
+      url: siteConfig.url,
+      name: siteConfig.agencyName,
+      alternateName: "DhruboIT",
+      publisher: {
+        "@id": `${siteConfig.url}/#organization`,
+      },
+    },
+  ],
 };
 
 export default function RootLayout({
@@ -58,6 +108,12 @@ export default function RootLayout({
   return (
     <html lang="en" className={jakarta.variable}>
       <body className="min-h-screen bg-white text-[#0B0B0F] antialiased">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationJsonLd),
+          }}
+        />
         <SmoothScrollProvider>
           <CustomCursor />
           {children}
