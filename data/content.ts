@@ -14,6 +14,7 @@ export const siteConfig = {
 export const navLinks = [
   { label: "Case Studies", href: "/case-studies" },
   { label: "About Us", href: "/about" },
+  { label: "Careers", href: "/careers" },
   { label: "FAQ", href: "/faq" },
   { label: "Contact", href: "/contact" },
 ];
@@ -558,6 +559,7 @@ export const footerContent = {
       links: [
         { label: "Case Studies", href: "/case-studies" },
         { label: "About Us", href: "/about" },
+        { label: "Careers", href: "/careers" },
         { label: "FAQ", href: "/faq" },
         { label: "Contact", href: "/contact" },
         { label: "Request Estimation", href: "/request-estimation" },
